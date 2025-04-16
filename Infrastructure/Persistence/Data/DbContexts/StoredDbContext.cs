@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persentation.Data.DbContexts
+namespace Persistence.Data.DbContexts
 {
     public class StoredDbContext(DbContextOptions<StoredDbContext> Options) : DbContext(Options)
     {
