@@ -3,4 +3,17 @@
 GET {{E_Commerce.Web_HostAddress}}/api/weatherforecast/
 Accept: application/json
 
-###
+###Get All Products
+GET {{E_Commerce.Web_HostAddress}}/api/Product
+
+###Get Product By Id
+@Id=10
+GET {{E_Commerce.Web_HostAddress}}/api/Product/{{Id}}
+
+###Get All Types
+
+GET {{E_Commerce.Web_HostAddress}}/api/Product/Types
+
+###Get All Brands
+GET {{E_Commerce.Web_HostAddress}}/api/Product/Brands
+
