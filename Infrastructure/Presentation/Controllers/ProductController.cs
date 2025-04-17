@@ -14,7 +14,7 @@ namespace Presentation.Controllers
     public class ProductController(IServiceManager _serviceManager) : ControllerBase
     {
         //Get All Products
-        //BaseURl/api/Product
+        //GET : BaseURl/api/Product
         [HttpGet]
         public async Task<ActionResult<ProductDto>> GetAllProducts()
         {
@@ -23,7 +23,7 @@ namespace Presentation.Controllers
         }
 
         //Get Product By Id
-        //BaseURL/api/Product/10
+        //GET: BaseURL/api/Product/10
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ProductDto>> GetProductById(int id)
         {
@@ -31,7 +31,7 @@ namespace Presentation.Controllers
             return Ok(product);
         }
         //Get All Types
-        //BaseURL/api/Product/Types
+        //GET: BaseURL/api/Product/Types
         [HttpGet("Types")]
         public async Task<ActionResult<TypeDto>> GetTypes()
         {
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
         }
 
         //Get All Brands
-        //BaseURL/api/Product/Brands
+        //GET: BaseURL/api/Product/Brands
         [HttpGet("Brands")]
         public async Task<ActionResult<TypeDto>> GetBrands()
         {
