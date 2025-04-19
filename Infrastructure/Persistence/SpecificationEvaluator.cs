@@ -44,6 +44,10 @@ namespace Persistence
             }
             //Query = _dbcontext.Products.where(P=>P.id==id.value).Include(p => p.ProductBrand).Include(p => p.ProductType);
 
+            if (specifications.IsPaginated)
+            {
+                Query = Query.Skip(specifications.Skip).Take(specifications.Take);
+            }
             return Query;
         }
     }
