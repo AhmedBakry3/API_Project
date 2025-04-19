@@ -24,6 +24,14 @@ namespace Persistence
             }
             //Query = _dbcontext.Products.where(P=>P.id==id.value)
 
+            if(specifications.OrderBy is not null)
+            {
+                Query = Query.OrderBy(specifications.OrderBy);
+            }
+            if(specifications.OrderByDescending is not null)
+            {
+                Query = Query.OrderByDescending(specifications.OrderByDescending);
+            }
 
             //Query = _dbcontext.Products
             //IncludeExpression = (p => p.ProductBrand)
