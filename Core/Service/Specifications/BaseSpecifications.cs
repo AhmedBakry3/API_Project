@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Service.Specification
 {
-    abstract class Specifications<TEntity, TKey> : ISpecifications<TEntity, TKey> where TEntity : BaseEntity<TKey>
+    abstract class BaseSpecifications<TEntity, TKey> : ISpecifications<TEntity, TKey> where TEntity : BaseEntity<TKey>
     {
-        public Specifications(Expression<Func<TEntity, bool>> criteria)
+        public BaseSpecifications(Expression<Func<TEntity, bool>>? criteria)
         {
             Criteria = criteria;
         }
-        public Expression<Func<TEntity, bool>> Criteria { get; private set; }
+        public Expression<Func<TEntity, bool>>? Criteria { get; private set; }
 
         public List<Expression<Func<TEntity, object>>> IncludeExpressions { get; } = [];
 

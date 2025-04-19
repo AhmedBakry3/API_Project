@@ -15,15 +15,27 @@ namespace Persistence
         //_dbcontext.product.where(p => p.id == id).Include(p => p.productbrands).Include(p=>p.prodType)
         public static IQueryable<TEntity> CreateQuery<TEntity,TKey>(IQueryable<TEntity> InputQuery, ISpecifications<TEntity, TKey> specifications) where TEntity : BaseEntity<TKey>
         {
-           var Query = InputQuery;
-            if(specifications.Criteria is not  null)
+            var Query = InputQuery;
+            //Query = _dbcontext.Products
+
+            if (specifications.Criteria is not  null)
             {
                 Query = Query.Where(specifications.Criteria);
             }
-            if(specifications.IncludeExpressions is not null &&specifications.IncludeExpressions.Count > 0)
+            //Query = _dbcontext.Products.where(P=>P.id==id.value)
+
+
+            //Query = _dbcontext.Products
+            //IncludeExpression = (p => p.ProductBrand)
+            //Query = _dbcontext.Products.Include(p => p.ProductBrand)
+            //IncludExpression =(p => p.ProductType)
+
+            if (specifications.IncludeExpressions is not null &&specifications.IncludeExpressions.Count > 0)
             {
-                specifications.IncludeExpressions.Aggregate(Query, (current, includeExpression) => current.Include(includeExpression));
+                Query =  specifications.IncludeExpressions.Aggregate(Query, (current, includeExpression) => current.Include(includeExpression));
             }
+            //Query = _dbcontext.Products.Include(p => p.ProductBrand).Include(p => p.ProductType);
+
             return Query;
         }
     }
