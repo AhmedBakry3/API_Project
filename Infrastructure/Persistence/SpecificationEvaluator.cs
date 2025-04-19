@@ -34,7 +34,7 @@ namespace Persistence
             {
                 Query =  specifications.IncludeExpressions.Aggregate(Query, (current, includeExpression) => current.Include(includeExpression));
             }
-            //Query = _dbcontext.Products.Include(p => p.ProductBrand).Include(p => p.ProductType);
+            //Query = _dbcontext.Products.where(P=>P.id==id.value).Include(p => p.ProductBrand).Include(p => p.ProductType);
 
             return Query;
         }
