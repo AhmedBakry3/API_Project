@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Enums
+namespace Shared.Product.Enums
 {
     public enum ProductSortingOptions
     {
-        NameAsc=1,
-        NameDesc=2,
-        PriceAsc=3,
-        PriceDesc=4
+        NameAsc = 1,
+        NameDesc = 2,
+        PriceAsc = 3,
+        PriceDesc = 4
     }
 }
