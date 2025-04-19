@@ -15,7 +15,8 @@ namespace Service.Specifications
         //Get All Products with Brands And Types
         public ProductWithBrandAndTypeSpecifications(ProductQueryParams queryParams) : 
             base(p=>(!queryParams.BrandId.HasValue || p.BrandId == queryParams.BrandId) &&
-            (!queryParams.TypeId.HasValue || p.TypeId == queryParams.TypeId))
+            (!queryParams.TypeId.HasValue || p.TypeId == queryParams.TypeId) 
+            && (string.IsNullOrEmpty(queryParams.SearchValue) ||(p.Name.ToLower().Contains(queryParams.SearchValue.ToLower()))))
         {
             AddInclude(p => p.ProductBrand);
             AddInclude(p => p.ProductType);
