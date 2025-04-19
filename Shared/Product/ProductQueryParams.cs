@@ -9,8 +9,8 @@ namespace Shared.Product
 {
     public class ProductQueryParams
     {
-        public const int DefaultPageSize = 5;
-        public const int MaxPageSize = 10;
+        private const int DefaultPageSize = 5;
+        private const int MaxPageSize = 10;
         public int? BrandId { get; set; }
         public int? TypeId  { get; set; }
         public ProductSortingOptions sortingOptions { get; set; } 
