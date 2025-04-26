@@ -1,4 +1,5 @@
 using DomainLayer.Contracts;
+using E_Commerce.Web.CustomMiddleWares;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using Persistence.Data.Repositories;
@@ -38,6 +39,8 @@ namespace E_Commerce.Web
             await ObjectDataSeeding.DataSeedAsync();
 
             #region Configure the HTTP request pipeline
+
+            app.UseMiddleware<CustomExceptionHandlerMiddleWare>();
 
             if (app.Environment.IsDevelopment())
             {
