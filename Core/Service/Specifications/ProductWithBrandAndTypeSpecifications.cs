@@ -1,4 +1,4 @@
-﻿using DomainLayer.Models;
+﻿using DomainLayer.Models.ProductModule;
 using Service.Specification;
 using Shared.Product;
 using Shared.Product.Enums;

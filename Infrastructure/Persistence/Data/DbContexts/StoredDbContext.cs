@@ -1,4 +1,4 @@
-﻿using DomainLayer.Models;
+﻿using DomainLayer.Models.ProductModule;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using Persistence;
