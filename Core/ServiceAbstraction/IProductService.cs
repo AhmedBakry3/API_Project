@@ -1,5 +1,5 @@
 ﻿using Shared;
-using Shared.DataTransferObject;
+using Shared.DataTransferObject.ProductModuleDtos;
 using Shared.Product;
 using Shared.Product.Enums;
 using System;
