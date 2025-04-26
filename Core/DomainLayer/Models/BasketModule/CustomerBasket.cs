@@ -8,7 +8,7 @@ namespace DomainLayer.Models.BasketModule
 {
     public class CustomerBasket
     {
-        public int Id { get; set; } //Guid : Created From Client [FrontEnd]
+        public string Id { get; set; } //Guid : Created From Client [FrontEnd]
         public ICollection<BasketItem> Items { get; set; } = [];
     }
 }
