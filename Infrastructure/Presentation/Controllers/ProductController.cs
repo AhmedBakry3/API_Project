@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ServiceAbstraction;
 using Shared;
 using Shared.DataTransferObject.ProductModuleDtos;
@@ -14,6 +15,7 @@ namespace Presentation.Controllers
 {
     public class ProductController(IServiceManager _serviceManager) : ApiBaseController
     {
+        [Authorize(Roles = "Admin")]
         //Get All Products
         //GET : BaseURl/api/Product
         [HttpGet]
