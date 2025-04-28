@@ -1,14 +1,13 @@
 ﻿using DomainLayer.Models.ProductModule;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
-using Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistence.Data.DbContexts
+namespace Persistence.Data.DbContexts.StoredDbContext
 {
     public class StoredDbContext(DbContextOptions<StoredDbContext> Options) : DbContext(Options)
     {
