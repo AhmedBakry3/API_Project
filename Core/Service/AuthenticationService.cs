@@ -43,7 +43,7 @@ namespace Service
             };
             //Create User [Application User]
             var result = await _userManager.CreateAsync(User, registerDto.Password);
-            if (!result.Succeeded)
+            if (result.Succeeded)
             {
                 //Return UserDto
                 return new UserDto

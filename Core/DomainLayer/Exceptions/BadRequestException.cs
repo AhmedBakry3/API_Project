@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Exceptions
 {
-    public class BadRequestException(List<string> Errors) : Exception("Validation Errors")
+    public sealed class BadRequestException(List<string> Errors) : Exception("Validation Errors")
     {
         public List<string> Errors { get; } = Errors;
     }
