@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Contracts;
 using DomainLayer.Models;
+using Persistence.Data.DbContexts.StoredDbContext;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data.DbContexts;
 using Persistence.Data.DbContexts.Identity;
+using Persistence.Data.DbContexts.StoredDbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,11 +53,20 @@ namespace Persistence.Data
                         await _dbContext.products.AddRangeAsync(products);
                 }
 
+                if (!_dbContext.Set<DeliveryMethod>().Any())
+                {
+                    var DeliveryMethodData = File.OpenRead(@"..\Infrastructure\Persistence\Data\DataSeed\delivery.json");
+                    var DeliveryMethods = await JsonSerializer.DeserializeAsync<List<DeliveryMethod>>(DeliveryMethodData);
+
+                    if (DeliveryMethods is not null && DeliveryMethods.Any())
+                        await _dbContext.Set<DeliveryMethod>().AddRangeAsync(DeliveryMethods);
+                }
+
                 await _dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                //TODO
+                Console.WriteLine(ex);
             }
 
         }
@@ -96,11 +106,10 @@ namespace Persistence.Data
                     await _userManager.AddToRoleAsync(User02, "SuperAdmin");
                 }
 
-                await _identityDbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                
+                Console.WriteLine(ex);
             }
         }
     }
