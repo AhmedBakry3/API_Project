@@ -34,6 +34,6 @@ namespace Persistence.Data.Repositories
             }
         }
 
-        public async Task<int> saveChanges() => await _dbContext.SaveChangesAsync();
+        public async Task<int> saveChangesAsync() => await _dbContext.SaveChangesAsync();
     }
 }
