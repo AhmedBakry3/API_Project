@@ -1,6 +1,7 @@
 ﻿using DomainLayer.Models.IdentityModule;
 using Microsoft.AspNetCore.Identity;
 using Persistence.Data.DbContexts.Identity;
+using Persistence.Data.DbContexts.StoredDbContext;
 using StackExchange.Redis;
 
 namespace Persistence

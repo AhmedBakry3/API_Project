@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Data.DbContexts.StoredDbContext;
 
@@ -11,9 +12,11 @@ using Persistence.Data.DbContexts.StoredDbContext;
 namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(StoredDbContext))]
-    partial class StoredDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250602130352_OrderEntitiesMigration")]
+    partial class OrderEntitiesMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,7 +189,7 @@ namespace Persistence.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("DomainLayer.Models.OrderModule.OrderAddress", "Address", b1 =>
+                    b.OwnsOne("DomainLayer.Models.OrderModule.OrderAddress", "OrderAddress", b1 =>
                         {
                             b1.Property<Guid>("OrderId")
                                 .HasColumnType("uniqueidentifier");
@@ -219,10 +222,10 @@ namespace Persistence.Data.Migrations
                                 .HasForeignKey("OrderId");
                         });
 
-                    b.Navigation("Address")
-                        .IsRequired();
-
                     b.Navigation("DeliveryMethod");
+
+                    b.Navigation("OrderAddress")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DomainLayer.Models.OrderModule.OrderItem", b =>
