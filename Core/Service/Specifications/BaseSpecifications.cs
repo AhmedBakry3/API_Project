@@ -29,7 +29,7 @@ namespace Service.Specification
         protected void AddOrderBy(Expression<Func<TEntity, object>> orderByExpression) => OrderBy = orderByExpression;
 
         public Expression<Func<TEntity, object>> OrderByDescending { get; private set; }
-        protected void AddOrderByDescending(Expression<Func<TEntity, object>> orderByExpression) => OrderByDescending = orderByExpression;
+        protected void AddOrderByDescending(Expression<Func<TEntity, object>> orderByDescendingExpression) => OrderByDescending = orderByDescendingExpression;
 
 
         #endregion
