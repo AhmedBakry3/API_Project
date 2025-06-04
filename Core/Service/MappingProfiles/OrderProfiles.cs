@@ -20,9 +20,9 @@ namespace Service.MappingProfiles
             CreateMap<Order, OrderToReturnDto>()
                     .ForMember(Dest => Dest.DeliveryMethod, Options => Options.MapFrom(src => src.DeliveryMethod.ShortName));
 
-            CreateMap<OrderItem,OrderItemDto>()
-                    .ForMember(Dest=>Dest.ProductName, Options => Options.MapFrom(src => src.Product.ProductName))
-                    .ForMember(Dest => Dest.PictureUrl, Options => Options.MapFrom<PictureUrlResolver>())
+            CreateMap<OrderItem, OrderItemDto>()
+                    .ForMember(Dest => Dest.ProductName, Options => Options.MapFrom(src => src.Product.ProductName))
+                    .ForMember(Dest => Dest.PictureUrl, Options => Options.MapFrom<OrderItemPictureResolver>());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Shared.DataTransferObject.OrderModuleDtos
         public Guid Id { get; set; }
         public string UserEmail { get; set; } = default!;
         public DateTimeOffset OrderDate { get; set; }
-        public string OrderStatus { get; set; } =default!;
+        public string Status { get; set; } =default!;
         public AddressDto Address { get; set; } = default!;
         public string DeliveryMethod { get; set; } = default!;
         public int DeliveryMethodId { get; set; }

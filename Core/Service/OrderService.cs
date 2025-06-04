@@ -17,7 +17,7 @@ namespace Service
 {
     public class OrderService(IMapper _mapper , IBasketRepository _basketRepository , IUnitOfWork _unitOfWork) : IOrderService
     {
-        public async Task<OrderToReturnDto> CreateOrderAsync(OrderDto OrderDto, string UserEmail)
+        public async Task<OrderToReturnDto> CreateOrderAsync(OrderDto OrderDto, string Email)
         {
             //Map Address to OrderAddress
             var OrderAddress = _mapper.Map<AddressDto,OrderAddress>(OrderDto.Address);
@@ -45,10 +45,12 @@ namespace Service
             //Calculate Subtotal
             var Subtotal = OrderItems.Sum(item => item.Price * item.Quantity);
 
-            var Order = new Order(UserEmail, OrderAddress, DeliveryMethod, OrderItems, Subtotal);
+            var Order = new Order(Email, OrderAddress, DeliveryMethod, OrderItems, Subtotal);
 
             await _unitOfWork.GetRepository<Order,Guid>().AddAsync(Order);
-            await _unitOfWork.saveChangesAsync();
+
+            await _unitOfWork.SaveChangesAsync();
+
 
             return _mapper.Map<Order, OrderToReturnDto>(Order);
         }
