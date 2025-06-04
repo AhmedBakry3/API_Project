@@ -45,11 +45,8 @@ namespace Service
             //Calculate Subtotal
             var Subtotal = OrderItems.Sum(item => item.Price * item.Quantity);
 
-            var Order = new Order(UserEmail, OrderAddress, DeliveryMethod, OrderItems, Subtotal)
-            {
-                DeliveryMethodId = OrderDto.DeliveryMethodId,
-                Status = OrderStatus.Pending
-            };
+            var Order = new Order(UserEmail, OrderAddress, DeliveryMethod, OrderItems, Subtotal);
+
             await _unitOfWork.GetRepository<Order,Guid>().AddAsync(Order);
             await _unitOfWork.saveChangesAsync();
 

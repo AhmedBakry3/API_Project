@@ -26,7 +26,7 @@ namespace DomainLayer.Models.OrderModule
         public DeliveryMethod DeliveryMethod { get; set; } = default!;
         public ICollection<OrderItem> Items { get; set; } = [];
         public decimal Subtotal { get; set; }
-        public OrderStatus Status { get; set; }
+        public OrderStatus OrderStatus { get; set; }
         public int DeliveryMethodId { get; set; }
 
         public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now;
