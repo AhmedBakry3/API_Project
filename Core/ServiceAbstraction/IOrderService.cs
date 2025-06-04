@@ -10,5 +10,11 @@ namespace ServiceAbstraction
     public interface IOrderService
     {
         public Task<OrderToReturnDto> CreateOrderAsync(OrderDto OrderDto, string UserEmail);
+
+        public Task<IEnumerable<DeliveryMethodDto>> GetDeliveryMethodsAsync();
+
+        public Task<IEnumerable<OrderToReturnDto>> GetAllOrdersAsync(string UserEmail);
+
+        public Task<OrderToReturnDto> GetOrdersAsync(Guid Id);
     }
 }
