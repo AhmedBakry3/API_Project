@@ -13,11 +13,10 @@ using System.Threading.Tasks;
 
 namespace Presentation.Controllers
 {
-    public class ProductController(IServiceManager _serviceManager) : ApiBaseController
+    public class ProductsController(IServiceManager _serviceManager) : ApiBaseController
     {
-        [Authorize(Roles = "Admin")]
         //Get All Products
-        //GET : BaseURl/api/Product
+        //GET : BaseURl/api/Products
         [HttpGet]
         public async Task<ActionResult<PaginatedResult<ProductDto>>> GetAllProducts([FromQuery]ProductQueryParams queryParams)
         {
@@ -26,7 +25,7 @@ namespace Presentation.Controllers
         }
 
         //Get Product By Id
-        //GET: BaseURL/api/Product/10
+        //GET: BaseURL/api/Products/10
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ProductDto>> GetProductById(int id)
         {
@@ -34,7 +33,7 @@ namespace Presentation.Controllers
             return Ok(product);
         }
         //Get All Types
-        //GET: BaseURL/api/Product/Types
+        //GET: BaseURL/api/Products/Types
         [HttpGet("Types")]
         public async Task<ActionResult<TypeDto>> GetTypes()
         {
@@ -43,7 +42,7 @@ namespace Presentation.Controllers
         }
 
         //Get All Brands
-        //GET: BaseURL/api/Product/Brands
+        //GET: BaseURL/api/Products/Brands
         [HttpGet("Brands")]
         public async Task<ActionResult<TypeDto>> GetBrands()
         {
