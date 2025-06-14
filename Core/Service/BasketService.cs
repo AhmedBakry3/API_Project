@@ -28,6 +28,7 @@ namespace Service
         public async Task<BasketDto> GetBasketAsync(string Key)
         {
             var Basket = await _basketRepository.GetBasketAsync(Key);
+
             if (Basket is not null)
                 return _mapper.Map<CustomerBasket, BasketDto>(Basket);
             else

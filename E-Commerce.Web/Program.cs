@@ -23,6 +23,13 @@ namespace E_Commerce.Web
             #region Add services to the container
             builder.Services.AddControllers();
             builder.Services.AddSwaggerServices();
+            builder.Services.AddCors(Options =>
+            {
+                Options.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
+            });
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddApplicationServices();
             builder.Services.AddWebApplicationServices();
@@ -42,6 +49,7 @@ namespace E_Commerce.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseCors("AllowAll");
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers(); 

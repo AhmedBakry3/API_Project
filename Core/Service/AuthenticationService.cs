@@ -40,14 +40,9 @@ namespace Service
         {
             var User = await _userManager.Users.Include(E => E.Address).FirstOrDefaultAsync(E => E.Email == Email)
                                                        ?? throw new UserNotFoundException(Email);
-            if (User.Address is not null)
-            {
-                return _mapper.Map<Address, AddressDto>(User.Address);
-            }
-            else
-            {
-                throw new AddressNotFoundException(User.UserName);  
-            }
+
+            return _mapper.Map<Address, AddressDto>(User.Address);
+
         }
 
         public async Task<AddressDto> UpdateCurrentUserAddressAsync(AddressDto addressDto, string Email)

@@ -16,12 +16,12 @@ namespace Service.Specifications
         public ProductWithBrandAndTypeSpecifications(ProductQueryParams queryParams) : 
             base(p=>(!queryParams.BrandId.HasValue || p.BrandId == queryParams.BrandId) &&
             (!queryParams.TypeId.HasValue || p.TypeId == queryParams.TypeId) 
-            && (string.IsNullOrEmpty(queryParams.SearchValue) ||(p.Name.ToLower().Contains(queryParams.SearchValue.ToLower()))))
+            && (string.IsNullOrEmpty(queryParams.search) ||(p.Name.ToLower().Contains(queryParams.search.ToLower()))))
         {
             AddInclude(p => p.ProductBrand);
             AddInclude(p => p.ProductType);
 
-            switch (queryParams.sortingOptions) 
+            switch (queryParams.sort) 
             {
                 case ProductSortingOptions.NameAsc:
                     AddOrderBy(p => p.Name);
@@ -38,7 +38,7 @@ namespace Service.Specifications
                 default:
                     break;
             }
-            ApplyPagination(queryParams.PageSize, queryParams.PageIndex);
+            ApplyPagination(queryParams.PageSize, queryParams.pageNumber);
         }
         //Get Product By Id
         public ProductWithBrandAndTypeSpecifications(int id) : base(p => p.Id == id)

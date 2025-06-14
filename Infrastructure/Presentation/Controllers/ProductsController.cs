@@ -19,7 +19,7 @@ namespace Presentation.Controllers
         //Get All Products
         //GET : BaseURl/api/Products
         [HttpGet]
-        [Cache(300)]
+        [Cache]
         public async Task<ActionResult<PaginatedResult<ProductDto>>> GetAllProducts([FromQuery]ProductQueryParams queryParams)
         {
             var products = await _serviceManager.ProductService.GetAllProductsAsync(queryParams);
@@ -37,6 +37,7 @@ namespace Presentation.Controllers
         //Get All Types
         //GET: BaseURL/api/Products/Types
         [HttpGet("Types")]
+        [Cache]
         public async Task<ActionResult<TypeDto>> GetTypes()
         {
             var Types = await _serviceManager.ProductService.GetAllTypesAsync();
@@ -46,6 +47,7 @@ namespace Presentation.Controllers
         //Get All Brands
         //GET: BaseURL/api/Products/Brands
         [HttpGet("Brands")]
+        [Cache]
         public async Task<ActionResult<TypeDto>> GetBrands()
         {
             var Brands = await _serviceManager.ProductService.GetAllBrandsAsync();

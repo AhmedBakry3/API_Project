@@ -31,7 +31,7 @@ namespace Presentation.Controllers
         }
 
         //Check Email
-        [HttpGet("CheckEmail")] // GET : BaseUrl/api/authentication/CheckEmail
+        [HttpGet("emailexists")] // GET : BaseUrl/api/authentication/CheckEmail
         public async Task<ActionResult<bool>> CheckEmail(string Email)
         {
             var Result = await _serviceManager.AuthenticationService.CheckEmailAsync(Email);
@@ -39,7 +39,7 @@ namespace Presentation.Controllers
         }
         //GetCurrentUser
         [Authorize]
-        [HttpGet("GetCurrentUser")] // GET : BaseUrl/api/authentication/GetCurrentUser
+        [HttpGet("CurrentUser")] // GET : BaseUrl/api/authentication/CurrentUser
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             var AppUser = await _serviceManager.AuthenticationService.GetCurrentUser(GetEmailFromToken());

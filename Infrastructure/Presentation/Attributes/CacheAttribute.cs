@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.Attributes
 {
-    internal class CacheAttribute(int DurationInSec = 90) : ActionFilterAttribute
+    internal class CacheAttribute(int DurationInSec = 300) : ActionFilterAttribute
     {
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
