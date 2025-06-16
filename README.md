@@ -79,9 +79,6 @@ The solution is organized into multiple projects following the **Onion Architect
 
 ## Getting Started
 
-1. Clone the repository.  
-2. Configure connection strings for SQL Server and Redis in `appsettings.json`.  
-3. Run EF Core migrations for both identity and application databases:  
+1. Clone the repository:  
    ```bash
-   dotnet ef database update --context StoredDbContext
-   dotnet ef database update --context StoreIdentityDbContext
+   git clone https://github.com/AhmedBakry3/ECommerceAPI.git
