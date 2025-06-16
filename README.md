@@ -41,7 +41,7 @@ The solution is organized into multiple projects following the **Onion Architect
 - JWT Bearer Authentication for secure token-based access  
 - AutoMapper for object mapping between entities and DTOs  
 - Stripe.NET for payment processing integration  
-- Swagger / Swashbuckle for API documentation and interactive testing  
+- Swagger for API documentation and interactive testing  
 - Postman can also be used for manual API endpoint testing  
 - Dependency Injection for managing service lifetimes  
 - EF Core Tools for database migrations  
